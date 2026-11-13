@@ -1,0 +1,156 @@
+{
+  "total": 1398,
+  "paired": 1354,
+  "missing": 44,
+  "high": 11,
+  "dates": 8,
+  "counts": {
+    "baseline": {
+      "falseLow": 11,
+      "unknown": 0,
+      "falseHigh": 9,
+      "trueHigh": 0
+    },
+    "margin": {
+      "falseLow": 10,
+      "unknown": 13,
+      "falseHigh": 9,
+      "trueHigh": 0
+    },
+    "peers": {
+      "falseLow": 5,
+      "unknown": 26,
+      "falseHigh": 9,
+      "trueHigh": 0
+    },
+    "FireBlind": {
+      "falseLow": 4,
+      "unknown": 39,
+      "falseHigh": 9,
+      "trueHigh": 0
+    }
+  },
+  "examples": [
+    {
+      "date": "2024-07-04",
+      "site": "06-037-1103",
+      "value": 44.15,
+      "last": 14.179167,
+      "peer": 43.945833,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "unknown",
+      "FireBlind": "unknown"
+    },
+    {
+      "date": "2024-07-04",
+      "site": "06-037-1302",
+      "value": 43.945833,
+      "last": 8.508333,
+      "peer": 44.15,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "unknown",
+      "FireBlind": "unknown"
+    },
+    {
+      "date": "2024-07-05",
+      "site": "06-037-1103",
+      "value": 62.370833,
+      "last": 16.6125,
+      "peer": 30.6375,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "low",
+      "FireBlind": "low"
+    },
+    {
+      "date": "2024-11-10",
+      "site": "06-037-1302",
+      "value": 38.345833,
+      "last": 11.108333,
+      "peer": 27.3875,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "low",
+      "FireBlind": "low"
+    },
+    {
+      "date": "2024-12-04",
+      "site": "06-037-1103",
+      "value": 37.725,
+      "last": 15.975,
+      "peer": 23.991667,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "low",
+      "FireBlind": "low"
+    },
+    {
+      "date": "2024-12-05",
+      "site": "06-037-1103",
+      "value": 45.166667,
+      "last": 17.6625,
+      "peer": 36.654167,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "unknown",
+      "FireBlind": "unknown"
+    },
+    {
+      "date": "2024-12-05",
+      "site": "06-037-1302",
+      "value": 36.654167,
+      "last": 21.795833,
+      "peer": 45.166667,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "unknown",
+      "FireBlind": "unknown"
+    },
+    {
+      "date": "2024-12-23",
+      "site": "06-037-1103",
+      "value": 37.995833,
+      "last": 29.566667,
+      "peer": 32.158333,
+      "baseline": "low",
+      "margin": "unknown",
+      "peers": "low",
+      "FireBlind": "unknown"
+    },
+    {
+      "date": "2024-12-24",
+      "site": "06-037-1302",
+      "value": 37.679167,
+      "last": 16.4875,
+      "peer": 28.975,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "low",
+      "FireBlind": "low"
+    },
+    {
+      "date": "2024-12-31",
+      "site": "06-037-1302",
+      "value": 45.979167,
+      "last": 21.720833,
+      "peer": 43.804167,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "unknown",
+      "FireBlind": "unknown"
+    },
+    {
+      "date": "2024-12-31",
+      "site": "06-037-4009",
+      "value": 43.804167,
+      "last": 19.3125,
+      "peer": 45.979167,
+      "baseline": "low",
+      "margin": "low",
+      "peers": "unknown",
+      "FireBlind": "unknown"
+    }
+  ]
+}
