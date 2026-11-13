@@ -1,0 +1,24 @@
+<!doctype html><html lang="uk"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FireBlind • Архів PM2.5</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#edf2ef;color:#16352f;font:17px/1.55 system-ui,sans-serif}main{max-width:850px;margin:auto;padding:4vw}h1{font-size:clamp(48px,9vw,84px);line-height:1;margin:.4em 0}section{background:white;padding:22px;margin:16px 0;border-radius:10px}label{display:inline-block;margin:6px 12px 6px 0}select,button{font:inherit;padding:7px;color:inherit}output{display:block;font-size:28px;font-weight:bold}small{display:block}button{cursor:pointer}p{margin:.5em 0}</style><main><small>Нью-Йорк · Архів EPA · 2023</small><h1>FireBlind</h1><p>Що покаже моніторинг диму, якщо місцева станція замовкла?</p><section><label>Доба <select id="day"></select></label><label>Станція <select id="site"></select></label><label>Діб без зв’язку <select id="lag"><option>1</option><option selected>3</option><option>7</option></select></label><br><label><input type="checkbox" id="blackout"> Вимкнути й сусідні станції</label></section>
+<section aria-live="polite"><small>Оцінка FireBlind · поріг досліду 35 мкг/м³</small><output id="decision"></output><p id="evidence"></p><p id="baseline"></p></section><section><button id="reveal">Відкрити прихований вимір EPA</button><p id="truth" aria-live="polite"></p></section><small>Реконструкція після завершення доби. PM2.5 має різні джерела. Позначка «нижче порога» не є медичною оцінкою.</small></main>
+<script src="model.js"></script><script src="replay.js"></script><script>
+const el=id=>document.getElementById(id);
+const fmt=v=>v===null?'немає даних':v.toFixed(2);
+const labels={low:'Оцінка нижче порога',high:'Можливе перевищення',unknown:'Недостатньо даних'};
+const days=[...new Set(cases.map(r=>r.date))];
+function fill(id,values){el(id).replaceChildren(...values.map(v=>new Option(v,v)))}
+fill('day',days);el('day').value='2023-06-07';
+let current;
+function draw(){
+ current=cases.find(r=>r.date===el('day').value&&r.site===el('site').value&&r.lag===Number(el('lag').value));
+ const peer=el('blackout').checked?null:current.peerMax;
+ el('decision').textContent=labels[FireBlind.guard(FireBlind.decide(current.last,current.q),peer)];
+ el('evidence').textContent='Останній локальний вимір: '+fmt(current.last)+' · Верхня оцінка: '+fmt(current.last===null?null:current.last+current.q)+' · Максимум інших станцій за цю добу: '+fmt(peer)+' мкг/м³.';
+ el('baseline').textContent='Повторення старого виміру: '+labels[FireBlind.decide(current.last,0)]+'.';
+ el('truth').textContent='';
+}
+function dateChanged(){fill('site',[...new Set(cases.filter(r=>r.date===el('day').value).map(r=>r.site))]);draw()}
+el('day').onchange=dateChanged;for(const id of ['site','lag','blackout'])el(id).onchange=draw;
+el('reveal').onclick=()=>el('truth').textContent='Вимір на прихованій станції: '+fmt(current.v)+' мкг/м³.';
+dateChanged();
+</script></html>
